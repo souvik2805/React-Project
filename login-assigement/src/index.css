@@ -1,0 +1,30 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    /* width: 0%; */
+    margin-bottom: 26px;
+    background-color: burlywood;
+}
+
+.nav-link{
+    font-size: 20px;;
+
+}
+form{
+    text-anchor: center;
+    width: 500px;
+    background-color: #a9ff0040;
+}
+input{
+    padding: 5px;
+    margin: 10px;
+}
+.error{
+    color: red;
+}
+.life{
+    text-align: center;
+    background: #00000014;
+}
