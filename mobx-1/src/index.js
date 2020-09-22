@@ -3,26 +3,32 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { observable, autorun, action } from "mobx";
+import { observable, action, autorun } from "mobx";
 
-class ShoppingCart {
+class shopingCart {
   @observable
   items = [];
+
+  @observable
+  totalPrice = 0;
 
   @action
   add(item) {
     this.items.push(item);
+    this.totalPrice += item.price;
   }
 }
-const mycart = new ShoppingCart();
+
+const mycart = new shopingCart();
 
 autorun(() => {
   console.log(mycart.items.length);
-  console.log(mycart.items.map((cart) => cart.name));
+
+  console.log("Total Price = " + mycart.totalPrice);
 });
 
-mycart.add({ name: "computer", price: 200 });
-mycart.add({ name: "computer2", price: 200 });
+mycart.add({ name: "Computer", price: 50 });
+mycart.add({ name: "Mouse", price: 50 });
 
 ReactDOM.render(
   <React.StrictMode>
