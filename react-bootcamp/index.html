@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://unpkg.com/react@16/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const fname = "Souvik";
+      const lname = "Biswas";
+      const fnameElement = React.createElement("h2", null, fname);
+      const lnameElement = React.createElement("h2", null, lname);
+      const fullElement = React.createElement(
+        "div",
+        { id: "container" },
+        fnameElement,
+        lnameElement
+      );
+
+      console.log(fullElement);
+      ReactDOM.render(fullElement, document.getElementById("root"));
+
+      //   ReactDOM.render(<h1>Hello World</h1>, document.getElementById("root"));
+    </script>
+  </body>
+</html>
