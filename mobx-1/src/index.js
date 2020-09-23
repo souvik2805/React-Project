@@ -3,32 +3,32 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { observable, action, autorun } from "mobx";
+import { observable, computed, action, autorun } from "mobx";
 
-class shopingCart {
+class ShoppingCart {
   @observable
   items = [];
 
-  @observable
-  totalPrice = 0;
+  @computed
+  get totalPrice() {
+    return this.items.reduce((acc, curr) => acc + curr.price, 0);
+  }
 
   @action
   add(item) {
     this.items.push(item);
-    this.totalPrice += item.price;
   }
 }
 
-const mycart = new shopingCart();
-
+const MyCart = new ShoppingCart();
 autorun(() => {
-  console.log(mycart.items.length);
-
-  console.log("Total Price = " + mycart.totalPrice);
+  console.log(MyCart.items.length);
+  console.log(MyCart.items.map((item) => item.Name));
+  console.log(MyCart.totalPrice);
 });
 
-mycart.add({ name: "Computer", price: 50 });
-mycart.add({ name: "Mouse", price: 50 });
+MyCart.add({ Name: "Computer", price: 100 });
+MyCart.add({ Name: "Biswas", price: 200 });
 
 ReactDOM.render(
   <React.StrictMode>
